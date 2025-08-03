@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
 #include <iostream>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class WrongAnimal
+class Cat : public Animal
 {
-protected:
-	std::string			type;
-
+private:
+	Brain	*brain;
 public:
-	// Constructors and Destructor
-	WrongAnimal();
-	WrongAnimal(std::string name);
-	~WrongAnimal();
-	WrongAnimal	(const WrongAnimal& copy);
-
-	// Assignment operator
-	WrongAnimal&	operator= (const WrongAnimal& other);
-
+	Cat();
+	~Cat();
+	Cat	(const Cat& copy);
+	Cat&	operator= (const Cat& other);
 	// Getters and Setters
-	std::string	getType() const;
-	void	    setType(std::string type);
+	Brain* getBrain() const;
 
-	// Member functions
 	void	makeSound() const;
 };
 

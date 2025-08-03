@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,54 +10,53 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.hpp"
+#include "Brain.hpp"
 
 using std::string;
 using std::endl;
 using std::cout;
 
-WrongAnimal::WrongAnimal() : type("WrongAnimal")
+Brain::Brain() 
 {
-	cout << "WrongAnimal default constructor called" <<endl;
+	cout << "Brain default constructor called" <<endl;
+	for (int i = 0; i < 100; ++i)
+    	ideas[i] = "empty dreams";
 }
 
-WrongAnimal::WrongAnimal(string name) : type(name)
+Brain::Brain	(const Brain& copy)
 {
-	cout << "WrongAnimal constructor called for " << type << endl;
+	cout << "Brain Copy constructor called" << endl;
+    for (int i = 0; i < 100; ++i)
+        ideas[i] = copy.getIdeas(i);
 }
 
-WrongAnimal::WrongAnimal	(const WrongAnimal& copy)
+Brain& Brain::operator= (const Brain& other)
 {
-	cout << "WrongAnimal Copy constructor called" << endl;
-	*this = copy;
-}
-
-WrongAnimal& WrongAnimal::operator= (const WrongAnimal& other)
-{
-	cout << "WrongAnimal Copy Assignment operator called" << endl;
+	cout << "Brain Copy Assignment operator called" << endl;
 	if (this != &other)
 	{
-		this->type 	= other.getType();
+		for (int i = 0; i < 100; ++i)
+		{
+			this->ideas[i] = other.getIdeas(i);
+		}
 	}
 	return (*this);
 }
 
-WrongAnimal::~WrongAnimal()
+Brain::~Brain()
 {
-	cout << "WrongAnimal destructor called for " << type << endl;
+	cout << "Brain destructor called" << endl;
 }
 
-string	WrongAnimal::getType() const
+const string&	Brain::getIdeas(int index) const
 {
-	return (this->type);
+	return (this->ideas[index]);
 }
 
-void	WrongAnimal::setType(string name)
+void Brain::setIdeas(int index, const std::string& idea)
 {
-	this->type = name;
-}
-
-void	WrongAnimal::makeSound() const
-{
-	cout << "WrongAnimal echoes silently through time..." << endl;
+	if (index >= 0 && index < 100)
+	{
+		this->ideas[index] = idea;
+	}
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,54 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongCat.hpp"
 
 using std::string;
 using std::endl;
 using std::cout;
 
-Animal::Animal() : type("Animal")
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-	cout << "Animal default constructor called" <<endl;
+	cout << "WrongCat default constructor called" << endl;
 }
 
-Animal::Animal(string name) : type(name)
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other)
 {
-	cout << "Animal constructor called for " << type << endl;
+    cout << "WrongCat copy constructor called" << endl;
 }
 
-Animal::Animal	(const Animal& copy)
+WrongCat& WrongCat::operator=(const WrongCat& other) 
 {
-	cout << "Animal Copy constructor called" << endl;
-	*this = copy;
+    cout << "WrongCat assignment operator called" << endl;
+    WrongAnimal::operator=(other);
+    return *this;
 }
 
-Animal& Animal::operator= (const Animal& other)
+WrongCat::~WrongCat()
 {
-	cout << "Animal Copy Assignment operator called" << endl;
-	if (this != &other)
-	{
-		this->type 	= other.getType();
-	}
-	return (*this);
+    cout << "WrongCat destructor called" << endl;
 }
 
-Animal::~Animal()
+void WrongCat::makeSound() const
 {
-	cout << "Animal destructor called for " << type << endl;
-}
-
-string	Animal::getType() const
-{
-	return (this->type);
-}
-
-void	Animal::setType(string name)
-{
-	this->type = name;
-}
-
-void	Animal::makeSound() const
-{
-	cout << "Animal echoes silently through time..." << endl;
+	cout << "     Meow! Meow!     " << endl;
 }

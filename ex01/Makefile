@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 00
+NAME = 01
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinc -g -MMD -MP -pedantic -Wshadow
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinc -g -MMD -MP -pedantic 
 
 # Directories
 SRC_DIR = src
@@ -24,7 +24,8 @@ SRCS = $(SRC_DIR)/main.cpp \
 	   $(SRC_DIR)/Dog.cpp \
 	   $(SRC_DIR)/Cat.cpp \
 	   $(SRC_DIR)/WrongAnimal.cpp \
-	   $(SRC_DIR)/WrongCat.cpp
+	   $(SRC_DIR)/WrongCat.cpp \
+	   $(SRC_DIR)/Brain.cpp
 
 # Object files and dependencies
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
