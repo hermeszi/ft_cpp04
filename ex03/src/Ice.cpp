@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Ice.hpp"
 
 using std::endl;
@@ -39,7 +40,7 @@ Ice::~Ice()
 
 AMateria* Ice::clone() const
 {
-    cout << "Ice clone called" << endl;
+    cout << "Cloning Ice" << endl;
     return (new Ice(*this));
 }
 

@@ -32,7 +32,7 @@ public:
 	AMateria&			operator= (const AMateria& other);
 	
 	// Getters and Setters
-	const std::string& 	getType() const;
+	virtual const std::string& 	getType() const;
 	void	    		setType(std::string type);
 
 	// Member functions

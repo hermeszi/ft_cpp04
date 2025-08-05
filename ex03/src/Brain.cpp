@@ -19,7 +19,7 @@ using std::cout;
 Brain::Brain() 
 {
 	cout << "Brain default constructor called" <<endl;
-	for (int i = 0; i < 100; ++i)
+	for (int i = SLOT_COUNT; i < 100; ++i)
     	ideas[i] = "empty dreams";
 }
 

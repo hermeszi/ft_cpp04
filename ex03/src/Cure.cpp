@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Cure.hpp"
 
 using std::endl;
@@ -39,7 +40,7 @@ Cure::~Cure()
 
 AMateria* Cure::clone() const
 {
-    cout << "Cure clone called" << endl;
+    cout << "Cloning Cure" << endl;
     return (new Cure(*this));
 }
 

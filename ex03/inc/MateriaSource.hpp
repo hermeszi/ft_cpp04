@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
-#include <iostream>
+#define SLOT_COUNT 4
+#include <string>
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
+class AMateria;
 
-class WrongAnimal
+class MateriaSource : public IMateriaSource
 {
-protected:
-	std::string			type;
+private:
+    AMateria* slots[SLOT_COUNT];
 
 public:
 	// Constructors and Destructor
-	WrongAnimal();
-	WrongAnimal(std::string name);
-	~WrongAnimal();
-	WrongAnimal	(const WrongAnimal& copy);
+    MateriaSource();
+    MateriaSource(const MateriaSource& other);
+    ~MateriaSource();
 
-	// Assignment operator
-	WrongAnimal&	operator= (const WrongAnimal& other);
+    // Assignment operator
+    MateriaSource& operator=(const MateriaSource& other);
 
-	// Getters and Setters
-	std::string	getType() const;
-	void	    setType(std::string type);
+    // Getters and Setters
+    AMateria* getMateria(int index) const; // cannot be const pointer
+    void setMateria(int index, AMateria* materia);
 
-	// Member functions
-	void	makeSound() const;
+    // Member functions
+    void learnMateria(AMateria*);
+    AMateria* createMateria(std::string const & type);
 };
 
 #endif
