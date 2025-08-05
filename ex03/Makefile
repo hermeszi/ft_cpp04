@@ -12,7 +12,7 @@
 
 NAME = 03
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinc -g -MMD -MP -pedantic -Wshadow
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinc -g -MMD -MP -pedantic
 
 # Directories
 SRC_DIR = src

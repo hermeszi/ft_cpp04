@@ -12,11 +12,12 @@
 
 #include <iostream>
 #include "Ice.hpp"
+#include "Character.hpp"
 
 using std::endl;
 using std::cout;
 
-Ice::Ice() : AMateria("Ice")
+Ice::Ice() : AMateria("ice")
 {
 	cout << "Ice default constructor called" << endl;
 }

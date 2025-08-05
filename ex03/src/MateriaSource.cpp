@@ -32,7 +32,12 @@ MateriaSource::MateriaSource	(const MateriaSource& copy)
 {
 	cout << "MateriaSource Copy constructor called" << endl;
     for (int i = 0; i < SLOT_COUNT; ++i)
-        slots[i] = copy.getMateria(i)->clone();
+	{
+		if (copy.getMateria(i))
+			slots[i] = copy.getMateria(i)->clone();
+		else
+			slots[i] = NULL;
+	}
 }
 
 MateriaSource& MateriaSource::operator= (const MateriaSource& other)
@@ -43,7 +48,10 @@ MateriaSource& MateriaSource::operator= (const MateriaSource& other)
 		for (int i = 0; i < SLOT_COUNT; ++i)
 		{
 			delete this->slots[i];
-			this->slots[i] = other.getMateria(i)->clone();
+			if (other.getMateria(i))
+				slots[i] = other.getMateria(i)->clone();
+			else
+				slots[i] = NULL;
 		}
 	}
 	return (*this);
@@ -51,10 +59,11 @@ MateriaSource& MateriaSource::operator= (const MateriaSource& other)
 
 MateriaSource::~MateriaSource()
 {
-	cout << "MateriaSource destructor called" << endl;
+	cout << "MateriaSource destructor called" <<endl;
 	for (int i = 0; i < SLOT_COUNT; ++i)
 	{
-		delete slots[i];
+		if (slots[i])
+			delete slots[i];
 		slots[i] = NULL;
 	}
 }
@@ -66,6 +75,11 @@ AMateria*	MateriaSource::getMateria(int index) const
 
 void MateriaSource::setMateria(int index, AMateria* materia)
 {
+	if (! materia)
+	{
+		cout << "nothing..." << endl;
+		return ;
+	}
 	if (index >= 0 && index < SLOT_COUNT)
 	{
 		delete this->slots[index];
@@ -75,6 +89,11 @@ void MateriaSource::setMateria(int index, AMateria* materia)
 
 void MateriaSource::learnMateria(AMateria* materia)
 {
+	if (! materia)
+	{
+		cout << "nothing..." << endl;
+		return ;
+	}
 	cout << "MateriaSource::learnMateria called" << endl;
 	for (int i = 0; i < SLOT_COUNT; ++i)
 	{
@@ -86,6 +105,7 @@ void MateriaSource::learnMateria(AMateria* materia)
 		}
 	}
 	cout << "No empty slots available to learn new materia" << endl;
+	delete materia;
 }
 
 AMateria* MateriaSource::createMateria(string const & type)

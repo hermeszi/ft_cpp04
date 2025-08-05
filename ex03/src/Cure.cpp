@@ -12,11 +12,12 @@
 
 #include <iostream>
 #include "Cure.hpp"
+#include "Character.hpp"
 
 using std::endl;
 using std::cout;
 
-Cure::Cure() : AMateria("Cure")
+Cure::Cure() : AMateria("cure")
 {
 	cout << "Cure default constructor called" << endl;
 }
