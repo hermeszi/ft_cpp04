@@ -6,7 +6,7 @@
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 16:53:29 by myuen             #+#    #+#             */
-/*   Updated: 2025/07/17 17:31:24 by myuen            ###   ########.fr       */
+/*   Updated: 2025/08/05 18:46:32 by myuen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
-
-#define SLOT_COUNT 4
-#define MAX_LOST 20
 
 using std::string;
 using std::endl;
@@ -163,7 +160,6 @@ void Character::unequip(int idx)
     {
         if (this->lost_count >= MAX_LOST - 1)
         {
-            cout << "*****LOST_COUNT is " << this->lost_count<< " *********** should not see this" <<endl;
 			remove_int = rand() % MAX_LOST;
             if (lostAndFound[remove_int])
             {
@@ -180,7 +176,7 @@ void Character::unequip(int idx)
             lost_count++;
         }
 
-        cout << slots[idx]->getType() << " at slot " << idx << " is dropped to the lost and found..." << endl;
+        cout << slots[idx]->getType() << " at slot " << idx << " is dropped to the Lost and Found..." << endl;
         slots[idx] = NULL;
     }
     else

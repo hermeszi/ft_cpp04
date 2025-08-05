@@ -6,7 +6,7 @@
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 16:53:29 by myuen             #+#    #+#             */
-/*   Updated: 2025/07/17 17:31:24 by myuen            ###   ########.fr       */
+/*   Updated: 2025/08/05 18:45:27 by myuen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
 {
     srand(time(NULL));
 
-    std::cout << "=== Creating Materia Source and Learning ===\n";
+    std::cout << "=== Creating Materia Source and Learning ===" << std::endl;
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
@@ -33,7 +33,7 @@ int main()
     src->learnMateria(new Ice());
     src->learnMateria(new Ice());
 
-    std::cout << "\n=== Creating Character 'me' and Equipping ===\n";
+    std::cout << "\n=== Creating Character 'me' and Equipping ===" << std::endl;
     ICharacter* me = new Character("Player");
 
     AMateria* tmp;
@@ -50,7 +50,7 @@ int main()
     tmp = src->createMateria("ice");
     me->equip (tmp);
 
-    std::cout << "\n=== Creating Character 'bob' and Using Materia ===\n";
+    std::cout << "\n=== Creating Character 'bob' and Using Materia ===" << std::endl;
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
     me->use(1, *bob);
@@ -63,16 +63,25 @@ int main()
     me->unequip(1);
     me->unequip(5);
 
-    std::cout << "\n=== Re-equipping 'me' with another Cure ===\n";
+    std::cout << "\n=== Re-equipping 'me' with another Cure ===" << std::endl;
     tmp = src->createMateria("cure");
     me->equip(tmp);
 
-    std::cout << "\n=== Cleanup ===\n";
+    std::cout << "\n=== Deep Copy Test  ===" << std::endl;
+    Character* shadow = new Character("shadow");
+    shadow->equip(new Ice());
+    Character copyOfShadow = *shadow;
+    shadow->unequip(0);
+    copyOfShadow.use(0, *bob);
+
+    std::cout << "\n=== Cleanup ===" << std::endl;
     delete bob;
     delete me;
     delete src;
+    delete shadow;
 
-    std::cout << "=== End of main ===\n";
-    return 0;
+    std::cout << "=== End of main ===" << std::endl;
+    
+    return (0);
 }
 

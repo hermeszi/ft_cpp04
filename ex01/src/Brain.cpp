@@ -6,7 +6,7 @@
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 16:53:29 by myuen             #+#    #+#             */
-/*   Updated: 2025/07/17 17:31:24 by myuen            ###   ########.fr       */
+/*   Updated: 2025/08/05 18:55:41 by myuen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ using std::string;
 using std::endl;
 using std::cout;
 
-Brain::Brain() 
+Brain::Brain()
 {
 	cout << "Brain default constructor called" <<endl;
 	for (int i = 0; i < 100; ++i)
